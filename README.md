@@ -1,2 +1,2 @@
-# Python-AI-Backend-Developer
-Bootcamp vivo de backend Python
+# Python AI Backend Developer
+Projeto do Bootcamp VIVO Python AI Backend Developer. 
