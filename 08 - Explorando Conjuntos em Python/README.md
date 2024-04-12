@@ -35,4 +35,3 @@ retorna erro
 ignorado
 * **{}.len()** - Descobrir o tamanho do conjunto
 * **in** - verificar se determinado número está no conjunto retorna true se existir e caso contrario false
-* 
