@@ -49,5 +49,5 @@ conta pertence a somente 1 usuario
 
 ## Dica
 
-Paraq vincular um usuário a uma conta, filtre a lista de usuários buscando o número do CPF informado para cada usuário 
+Para vincular um usuário a uma conta, filtre a lista de usuários buscando o número do CPF informado para cada usuário 
 da lista.

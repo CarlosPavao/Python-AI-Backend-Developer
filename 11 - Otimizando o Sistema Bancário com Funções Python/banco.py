@@ -9,6 +9,7 @@ def menu():
     [4]\tNova conta
     [5]\tListar contas
     [6]\tNovo usuário
+    [7]\tListar Usúarios
     [0]\tSair
 
     => """
@@ -62,7 +63,7 @@ def add_user(usuarios, nome, cpf, data_nascimento, endereco):
     }
 def new_user(usuarios):
     cpf_sem_verificacao = input("Informe seu CPF")
-    cpf = cpf_sem_verificacao.replace(".", "")
+    cpf = cpf_sem_verificacao.replace(".", "").replace("-", "")
     usuario = filter_user(cpf, usuarios)
 
     if usuario:
@@ -118,13 +119,30 @@ def imprimir_user(usuarios):
                     print("  " + k + ":", v)
             else:
                 print(chave + ":", valor)
-def new_account(usuarios):
 
-    agência
-    número_conta
 
-    usuário
-    print("Conta criado")
+def new_account(agencia, numero_conta, usuarios):
+    cpf_sem_verificacao = input("Qual CPF deseja criar a conta? ")
+    cpf = cpf_sem_verificacao.replace(".", "").replace("-","")
+    usuario = filter_user(cpf, usuarios)
+
+    if usuario:
+        print("\n=== Conta criada com sucesso! ===")
+        return {"agencia": agencia, "numero_conta": numero_conta, "usuario": usuario}
+
+
+    print("Usuário Não encontrado com cpf informado, por favor criar primeiro o usuario!")
+
+def listar_contas(contas):
+    for conta in contas:
+        nome_titular = conta['usuario']['Nome']  # Acessando apenas o nome do titular da conta
+        linha = f"""\
+            Agência:\t{conta['agencia']}
+            C/C:\t\t{conta['numero_conta']}
+            Titular:\t{nome_titular}
+        """
+        print("=" * 100)
+        print(textwrap.dedent(linha))
 
 
 
@@ -137,7 +155,6 @@ def main():
     extrato = ""
     numero_saques = 0
     usuarios = {}
-    enderecos = {}
     contas = []
     while True:
 
@@ -168,8 +185,17 @@ def main():
             exibir_extrato(saldo, extrato=extrato)
 
         elif opcao == "4":
-            usuarios = new_user(usuarios)
+            numero_conta = len(contas) + 1
+            conta = new_account(AGENCIA, numero_conta, usuarios)
+
+            if conta:
+                contas.append(conta)
+
         elif opcao =="5":
+            listar_contas(contas)
+        elif opcao =="6":
+            usuarios = new_user(usuarios)
+        elif opcao == "7":
             imprimir_user(usuarios)
         elif opcao == "0":
             break
