@@ -1,4 +1,4 @@
-##Dicionário
+## Dicionário
 
 Um dicionário é um conjunto não ordenado de pares chave:valorm onde as chaves são unicas em uma dada instância
 do dicionário. Dicionários são delimitados por chave:{}, e contem uma lista de pates chave:valor separado por vírgulas
